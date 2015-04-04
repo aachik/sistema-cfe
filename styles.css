@@ -1,0 +1,12 @@
+.cuadro{
+    display:fixed;
+    width: 33.33%;
+    float:left;
+    height: 350px;
+    overflow: auto;
+    border: 1px solid rgb(40,100,200);
+}
+.cuadro ul li {
+    font-size: 0.875em;
+    
+}
