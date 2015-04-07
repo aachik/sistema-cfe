@@ -1,49 +1,48 @@
+
 angular.module('Sistema-cfe', [])
     .controller('competenciasCtrl', function ($scope, $http) {
-    $scope.competencias = [];
+    $scope.usuarios = [];
     
-    $http.get('competencias.json')
+    $http.get('database.json')
         .success(function (response) {
-            $scope.competencias = response;
+            $scope.usuarios = response;
            
     })
         .error(function (err) {
         alert(err);
     });
-    $http.get('empleados.json')
-        .success(function (response) {
-        $scope.empleados = response;
-    });
-    function borrarTitulo(){
-        
-         $('#mostrar h1').empty();
-        
-         $('#mostrar h1').append('Competencias');
+    
+    function borrarTitulo(guardar){
+            guardar = guardar || "Competencias"
+         $('#competencia-menu h1').empty();
+         $('#competencia-menu h1').append(guardar);
     }
   
     var guardar = 0;
     
     $scope.remove = function($index) { 
-        
-      guardar = $scope.competencias.Competencias[$index];
-      $scope.competencias.Competencias.splice($index, 1);
-        $('#mostrar h1').empty();
-         $('#mostrar h1').append(guardar);
+      guardar = $scope.usuario.competencias.neutras[$index];
+      $scope.usuario.competencias.neutras.splice($index, 1);
+        borrarTitulo(guardar);
     }
     
-    $scope.si = function($scope){
+    $scope.si = function(){
         var comp = $('h1').html();
-        $('#izq-ls').append('<li>'+comp+'</li>')
-        borrarTitulo();
+        $scope.usuario.competencias.existentes.push(comp);
+        borrarTitulo()
         
     }
     
-    $scope.no = function($scope){
-        var comp = $('h1').html();
-        
-        $('#der-ls').append('<li>'+comp+'</li>')
+    
+    $scope.no = function(){
+        var comp = $('h1').html();  
+        $scope.usuario.competencias.inexistentes.push(comp);
         borrarTitulo();
         
+        
+    }
+    $scope.selectedValue = function(value){
+
     }
     
     

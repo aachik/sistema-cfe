@@ -10,3 +10,14 @@
     font-size: 0.875em;
     
 }
+#competencia-menu{
+    display: inline-block;
+    float:left;
+    width: 70%;
+}
+#empleados-menu{
+    
+    padding: 45px 0 45px 25px;
+    display: inline-block;
+    width:30%;
+}
