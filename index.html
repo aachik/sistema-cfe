@@ -7,40 +7,51 @@
         <script src="bootstrap.js"></script>
         <script src="angular.js"></script> 
         <script src="ui-utils.js"></script>
+        <script src="others.js"></script>
         <script src="app.js"></script>
     </head>
 
     <body ng-controller="competenciasCtrl">
-        <div id="competencia-menu">
-            <h1>Competencias</h1>
-            <button ng-click="si()">Si tiene esta competencia</button> 
-            <button ng-click="no()">No tiene esta competencia</button>
+        <div id="acceso">
+            <form id="form" >
+                <input type="text" placeholder="usuario..." id="usuario" name="usuario">
+                <input type="password" placeholder="contraseña..." id="contraseña" name="contraseña">
+                <input type="submit" value="iniciar sesion" ng-click="submit()">
+            </form>
         </div>
-        <div id="empleados-menu">
-            <p style="display:inline">Evaluando a: </p>
-            <select id="empleados" ng-model="usuario" ng-options="usuario.nombre for usuario in usuarios.usuarios" ng-change="selectedValue()">
-                <option value="" disabled>Seleccione a alguien</option>
-            </select>
+        <div id="wrapper">
+            <div id="competencia-menu">
+                <h1>Competencias</h1>
+                <button ng-click="si()">Si tiene esta competencia</button>
+                <button ng-click="no()">No tiene esta competencia</button>
+            </div>
+            <div id="empleados-menu">
+                <p style="display:inline">Evaluando a: </p>
+                <select id="empleados" ng-model="usuario" ng-options="usuario.nombre for usuario in usuarios.usuarios" ng-change="selectedValue()">
+                    <option value="" disabled>Seleccione a alguien</option>
+                </select>
+            </div>
+            <div class="cuadro" id="izq">
+                <h2 class="competencias_cuadro_titulo">Competencias Existentes</h2>
+                <ul class="competencias_lista" id="izq-ls">
+                    <li data-ng-model="usuario" data-ng-repeat="competencia in usuario.competencias.existentes "><a href="#" ng-click="remove($index)">{{ competencia }}</a></li>
+
+                </ul>
+            </div>
+            <div class="cuadro" >
+                <h2 class="competencias_cuadro_titulo">Competencias Neutras</h2>
+                <ul class="competencias_lista">
+                    <li data-ng-model="usuario" data-ng-repeat="competencia in usuario.competencias.neutras "><a href="#" ng-click="remove($index)">{{ competencia }}</a></li>
+                </ul>
+            </div>
+            <div class="cuadro" id="der">
+                <h2 class="competencias_cuadro_titulo">Competencias Inexistentes</h2>
+                <ul class="competencias_lista" id="der-ls">
+                    <li data-ng-model="usuario" data-ng-repeat="competencia in usuario.competencias.inexistentes "><a href="#" ng-click="remove($index)">{{ competencia }}</a></li>
+
+                </ul>
+
+            </div>
         </div>
-        <div class="cuadro" id="izq">
-            <ul id="izq-ls">
-                <li data-ng-model="usuario" data-ng-repeat="competencia in usuario.competencias.existentes "><a href="#" ng-click="remove($index)">{{ competencia }}</a></li>
-            
-            </ul>
-        </div>
-        <div class="cuadro" >
-            
-            <ul>
-                <li data-ng-model="usuario" data-ng-repeat="competencia in usuario.competencias.neutras "><a href="#" ng-click="remove($index)">{{ competencia }}</a></li>
-            </ul>
-        </div>
-        <div class="cuadro" id="der">
-            <ul id="der-ls">
-                <li data-ng-model="usuario" data-ng-repeat="competencia in usuario.competencias.inexistentes "><a href="#" ng-click="remove($index)">{{ competencia }}</a></li>
-            
-            </ul>
-            
-        </div>
-       
     </body>
 </html>

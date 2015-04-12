@@ -17,11 +17,10 @@ angular.module('Sistema-cfe', [])
          $('#competencia-menu h1').empty();
          $('#competencia-menu h1').append(guardar);
     }
-  
-    var guardar = 0;
+
     
     $scope.remove = function($index) { 
-      guardar = $scope.usuario.competencias.neutras[$index];
+      var guardar = $scope.usuario.competencias.neutras[$index];
       $scope.usuario.competencias.neutras.splice($index, 1);
         borrarTitulo(guardar);
     }
@@ -44,7 +43,17 @@ angular.module('Sistema-cfe', [])
     $scope.selectedValue = function(value){
 
     }
-    
+    $scope.submit = function(event){
+        alert(event);
+         var user = $('#usuario').val();
+        var contraseña = $('#contraseña').val();
+        $('#usuario').val('');
+        $('#contraseña').val('');
+        $('#acceso').css('display', 'none');
+        var form = $('#form');
+       form.preventDefault();
+
+    }
     
 }).filter('unique', function() {
    return function(collection, keyname) {
@@ -62,3 +71,4 @@ angular.module('Sistema-cfe', [])
       return output;
    }
 });
+

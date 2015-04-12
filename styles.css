@@ -1,3 +1,6 @@
+body{
+    overflow: auto;
+}
 .cuadro{
     display:fixed;
     width: 33.33%;
@@ -20,4 +23,22 @@
     padding: 45px 0 45px 25px;
     display: inline-block;
     width:30%;
+}
+.competencias_lista li{
+    margin: 20px 20px -20px -40px;
+    padding:5px 5px 5px 15px;
+    list-style:none;
+}
+.competencias_cuadro_titulo{
+    margin-top: 1px;
+    text-align: center;
+    padding:5px;
+    font-size: 1.2em;
+}
+#acceso{
+    padding:25% 25%;
+    text-align: center;
+    position: fixed;
+    background:white;
+
 }
