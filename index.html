@@ -14,8 +14,8 @@
     <body ng-controller="competenciasCtrl">
         <div id="acceso">
             <form id="form" >
-                <input type="text" placeholder="usuario..." id="usuario" name="usuario">
-                <input type="password" placeholder="contraseña..." id="contraseña" name="contraseña">
+                <input type="text" placeholder="usuario..." id="usuario" name="usuario" ng-model="form.usuario">
+                <input type="password" placeholder="contraseña..." id="contraseña" name="contraseña" ng-model="form.contrasena">
                 <input type="submit" value="iniciar sesion" ng-click="submit()">
             </form>
         </div>
@@ -32,20 +32,20 @@
                 </select>
             </div>
             <div class="cuadro" id="izq">
-                <h2 class="competencias_cuadro_titulo">Competencias Existentes</h2>
+                <h2 class="competencias_cuadro_titulo">Competencias Existentes: {{ usuario.competencias.existentes.length}}</h2>
                 <ul class="competencias_lista" id="izq-ls">
                     <li data-ng-model="usuario" data-ng-repeat="competencia in usuario.competencias.existentes "><a href="#" ng-click="remove($index)">{{ competencia }}</a></li>
 
                 </ul>
             </div>
             <div class="cuadro" >
-                <h2 class="competencias_cuadro_titulo">Competencias Neutras</h2>
+                <h2 class="competencias_cuadro_titulo">Competencias Neutras: {{ usuario.competencias.neutras.length}}</h2>
                 <ul class="competencias_lista">
                     <li data-ng-model="usuario" data-ng-repeat="competencia in usuario.competencias.neutras "><a href="#" ng-click="remove($index)">{{ competencia }}</a></li>
                 </ul>
             </div>
             <div class="cuadro" id="der">
-                <h2 class="competencias_cuadro_titulo">Competencias Inexistentes</h2>
+                <h2 class="competencias_cuadro_titulo">Competencias Inexistentes:  {{ usuario.competencias.inexistentes.length }}</h2>
                 <ul class="competencias_lista" id="der-ls">
                     <li data-ng-model="usuario" data-ng-repeat="competencia in usuario.competencias.inexistentes "><a href="#" ng-click="remove($index)">{{ competencia }}</a></li>
 
@@ -53,5 +53,14 @@
 
             </div>
         </div>
+        <div id="resultados">
+            <h2> Bienvenido {{ usuarios.nombre }} </h2>
+            <h3>Falta de evaluar</h3>
+            <div class="chart" ng-controller="graficaCtrl">
+                <div ng-repeat="usuario in usuarios.usuarios" style="width: {{ usuario.competencias.neutras.length + (usuario.competencias.existentes.length*5) + (usuario.competencias.inexistentes.length*5)}}px;">{{usuario.nombre}}</div>
+            <button>Enviar resultados</button>
+
+        </div>
+        <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
     </body>
 </html>

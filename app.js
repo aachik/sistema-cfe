@@ -41,16 +41,24 @@ angular.module('Sistema-cfe', [])
         
     }
     $scope.selectedValue = function(value){
-
     }
+
     $scope.submit = function(event){
-        alert(event);
-         var user = $('#usuario').val();
-        var contraseña = $('#contraseña').val();
-        $('#usuario').val('');
-        $('#contraseña').val('');
-        $('#acceso').css('display', 'none');
-        var form = $('#form');
+
+        var form = $('form');
+        var values = {};
+        $.each(form.serializeArray(), function(i, field){
+            values[field.name] = field.value;
+        });
+
+        if(values['usuario'] == $scope.usuarios.cuenta && values['contraseña'] == $scope.usuarios.contraseña){
+            $('#acceso').css('display', 'none');
+        }
+        else {
+            $('#form').append('<div class="alert alert-danger alert-dismissible" role="alert">  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>  <strong>Alerta!</strong> Datos incorrectos favor de verificarlos</div>');
+            $('#usuario').val('');
+              $('#contraseña').val('');
+        }
        form.preventDefault();
 
     }
@@ -70,5 +78,8 @@ angular.module('Sistema-cfe', [])
 
       return output;
    }
+}).controller('graficaCtrl', function($scope){
+
+
 });
 

@@ -33,12 +33,21 @@ body{
     margin-top: 1px;
     text-align: center;
     padding:5px;
-    font-size: 1.2em;
+    font-size: 1.1em;
 }
 #acceso{
-    padding:25% 25%;
+    padding:25% 34.55%;
     text-align: center;
     position: fixed;
     background:white;
 
+}
+
+.chart div {
+  font: 10px sans-serif;
+  background-color: steelblue;
+  text-align: right;
+  padding: 3px;
+  margin: 1px;
+  color: white;
 }
